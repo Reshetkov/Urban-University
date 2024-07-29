@@ -1,5 +1,4 @@
 #fake_math.py
-quotient = 0
 
 def divide(first, second):
     global quotient
