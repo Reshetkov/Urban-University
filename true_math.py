@@ -1,6 +1,5 @@
 #true_math.py
 from math import inf
-quotient = 0
 
 def divide(first, second):
     global quotient
