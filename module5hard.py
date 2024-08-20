@@ -10,11 +10,10 @@ class Video:
         self.duration = duration
 
 class UrTube:
-    def __init__(self, User, Video, current_user, age):
-        self.users = {}
+    def __init__(self, User, Video, current_user):
+        self.users = {'1': '1'}
         self.videos = {}
         self.current_user = current_user
-        self.age = age
 
     def __repr__(self):
         return f'{self.__class__}: {self.users}'
@@ -23,19 +22,24 @@ class UrTube:
         if nickname in self.users:
             if hash(password) == hash(self.users[nickname]):
                 self.current_user = nickname
+            else:
+                print('Пароль неверен')
 
     def register(self, nickname, password, age):
         if nickname not in self.users:
             self.users[nickname] = password
             self.current_user = nickname
             self.age = age
-        else: print(f'Пользователь {nickname} уже существует')
+        else:
+            print(f'Пользователь {nickname} уже существует')
 
     def log_out(self):
         self.current_user = None
 
-    def add(self, title, duration):
-        if title not in self.videos.keys():
+    def add(self, *v):
+        for i in range(len(v)):
+            title = v[i].title
+            duration = v[i].duration
             self.videos[title] = duration
 
     def get_videos(self, keyword):
@@ -49,7 +53,7 @@ class UrTube:
         for key in self.videos:
             if key == title:
                 if self.current_user != None:
-                    if self.age >= 18:
+                    if user.age >= 18:
                         for i in range(1, self.videos[title] + 1):
                             print(i)
                             time.sleep(1)
@@ -61,20 +65,24 @@ class UrTube:
 
 
 import time
-ur = UrTube({}, {}, None, None)
+ur = UrTube({}, {}, None)
 
+N = int(input('Сколько будет пользователей?: '))
+i = 1
+while i <= N:
+    i += 1
+    ur.log_out()
+    choiсe = int(input('Приветствую! Выберите действие: \n1 - Вход\n2 - Регистрация\n'))
+    if choiсe == 1:
+        user = User(input('Введите логин: '), input('Введите пароль: '), 18)
+        ur.log_in(user.nickname, user.password)
+    if choiсe == 2:
+        user = User(input('Введите логин: '), input('Введите пароль: '), int(input('Введите возраст: ')))
+        ur.register(user.nickname, user.password, user.age)
 
-#while True:
-user = User(input('Введите логин: '), input('Введите пароль: '), int(input('Введите возраст: ')))
-ur.register(user.nickname, user.password, user.age)
-ur.log_in(user.nickname, user.password)
-
-
-v1 = Video('Animals World', 5)
-v2 = Video('Plants', 7)
-#ur.add(v1, v2)
-ur.add(v1.title, v1.duration)
-ur.add(v2.title, v2.duration)
+print(ur.users)
+v1 = Video('Animals World', 5, 0, False)
+v2 = Video('Plants', 7, 0, False)
+ur.add(v1, v2)
 ur.get_videos('Animals')
 ur.watch_video('Animals World')
-
