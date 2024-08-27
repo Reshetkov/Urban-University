@@ -13,14 +13,14 @@ class Shop():
 
     def get_products(self):
         file = open(self.__file_name, 'r')
-        print(file.read())
+        self.list_temp = file.read()
         file.close()
+        return (self.list_temp)
 
     def add(self, *products):
         for i in range(len(products)):
             file = open(self.__file_name, 'r')
-            list_file = file.read()
-            if str(products[i]) in list_file:
+            if str(products[i]) in self.get_products():
                 print(f'Продукт {products[i]} уже есть в магазине')
             else:
                 file = open(self.__file_name, 'a')
