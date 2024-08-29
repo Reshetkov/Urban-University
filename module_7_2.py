@@ -20,28 +20,3 @@ def custom_write(file_name, strings):     # file_name - название фай�
 result = custom_write('test.txt', info)
 for elem in result.items():
   print(elem)
-
-
-
-
-
-
-
-
-
-  # def custom_write(file_name, strings):  # file_name - название файла для записи, strings - список строк для записи
-  #     file = open(file_name, 'wb')
-  #     print(file.tell())
-  #     pickle.dump(strings, file)
-  #     print(file.tell())
-  #     for i in range(1, len(strings) + 1):
-  #         print(file.tell())
-  #         c.append((i, file.tell()))
-  #
-  #     file.close()
-  #     file = open(file_name, 'rb')
-  #     t1 = pickle.load(file)
-  #     file.close()
-  #
-  #     b = dict(zip(c, t1))
-  #     return b
