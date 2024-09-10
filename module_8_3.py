@@ -61,14 +61,14 @@ except IncorrectCarNumbers as exc:
 else:
   print(f'{third.model} успешно создан')
 
-try:   #Дополнительная проверка на тип данных для vip номеров
+try:   #Дополнительная проверка на тип данных для vin номеров
     fourth = Car('Model4', '500000', 'k234lt')
 except IncorrectVinNumber as exc:
   print(exc.message)
 except IncorrectCarNumbers as exc:
   print(exc.message)
 
-try: #Дополнительная проверка на тип данных для номеров
+try:   #Дополнительная проверка на тип данных для номеров
    fifth = Car('Model5', 5000000, 123456)
 except IncorrectVinNumber as exc:
   print(exc.message)
