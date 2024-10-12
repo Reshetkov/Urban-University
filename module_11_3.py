@@ -12,7 +12,7 @@ def introspection_info(obj):
             methods.append(attr_name)
     module = __name__
     module_origin = inspect.getmodule(obj)
-    is_float = isinstance(determinant, float)
+    is_float = isinstance(obj, float)
 
     return {f'type: {type_obj}, attributes: {attributes}, methods: {methods}, module: {module}, '
             f'float: {is_float}, from module: {module_origin}'}
@@ -21,4 +21,6 @@ matrix = np.array([[5, 3, -2], [3, 2, -3], [4, 2, -1]])
 determinant = np.linalg.det(matrix)
 
 determinant_info = introspection_info(determinant)
+number_info = introspection_info(42)
 pprint(determinant_info)
+print(number_info)
