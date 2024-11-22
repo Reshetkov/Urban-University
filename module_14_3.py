@@ -21,10 +21,10 @@ inline_buttons = InlineKeyboardMarkup(inline_keyboard=[
 ], resize_keyboard=True, input_field_placeholder='Выберите опцию:')
 
 inline_buttons_buy = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Product1', callback_data='product_buying'),
-     InlineKeyboardButton(text='Product2', callback_data='product_buying'),
-     InlineKeyboardButton(text='Product3', callback_data='product_buying'),
-     InlineKeyboardButton(text='Product4', callback_data='product_buying')]
+    [InlineKeyboardButton(text='Product1', callback_data='product_buying_1'),
+     InlineKeyboardButton(text='Product2', callback_data='product_buying_2'),
+     InlineKeyboardButton(text='Product3', callback_data='product_buying_3'),
+     InlineKeyboardButton(text='Product4', callback_data='product_buying_4')]
 ], resize_keyboard=True, input_field_placeholder='Выберите опцию:')
 
 
@@ -66,7 +66,25 @@ async def set_age(callback: CallbackQuery):
     await callback.message.answer('10 х вес (кг) + 6,25 x рост (см) – 5 х возраст (г) + 5')
 
 
-@dp.callback_query(F.data == 'product_buying')
+@dp.callback_query(F.data == 'product_buying_1')
+async def send_confirm_message(callback: CallbackQuery, state: FSMContext):
+    await callback.answer()
+    await callback.message.answer('Вы успешно приобрели продукт!')
+
+
+@dp.callback_query(F.data == 'product_buying_2')
+async def send_confirm_message(callback: CallbackQuery, state: FSMContext):
+    await callback.answer()
+    await callback.message.answer('Вы успешно приобрели продукт!')
+
+
+@dp.callback_query(F.data == 'product_buying_3')
+async def send_confirm_message(callback: CallbackQuery, state: FSMContext):
+    await callback.answer()
+    await callback.message.answer('Вы успешно приобрели продукт!')
+
+
+@dp.callback_query(F.data == 'product_buying_4')
 async def send_confirm_message(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
     await callback.message.answer('Вы успешно приобрели продукт!')
