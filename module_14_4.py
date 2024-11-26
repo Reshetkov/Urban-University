@@ -1,4 +1,5 @@
 import asyncio
+from itertools import product
 
 from aiogram import F, Bot, Dispatcher
 from aiogram.filters import Command
@@ -9,8 +10,9 @@ from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 
 from crud_functions import get_all_products
+products = get_all_products()
 
-bot = Bot(token='')
+bot = Bot(token='8127768984:AAG9MJC0pXIhgkPEhv_gxFTm2UFQOacn7Zo')
 dp = Dispatcher()
 
 buttons = ReplyKeyboardMarkup(keyboard=[
@@ -39,7 +41,7 @@ async def start(message: Message):
 async def get_buying_list(message: Message):
     for i in range(1, 5):
         await message.answer(
-            f'Название: {get_all_products()[i-1][1]} | Описание: {get_all_products()[i-1][2]} | Цена: {get_all_products()[i-1][3]}')
+            f'Название: {products[i-1][1]} | Описание: {products[i-1][2]} | Цена: {products[i-1][3]}')
         vitamins = FSInputFile(f"D:/PythonProject/Vitamins{i}.jpg")
         await message.answer_photo(photo=vitamins)
     await message.answer('Выберите продукт для покупки:', reply_markup=inline_buttons_buy)
