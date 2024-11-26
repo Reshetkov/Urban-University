@@ -21,6 +21,7 @@ def get_all_products():
     for i in range(1, 5):
         cursor.execute("SELECT id, title, description, price FROM Products")
     products = cursor.fetchall()
+    db.commit()
     return products
 
 
