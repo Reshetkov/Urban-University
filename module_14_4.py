@@ -10,7 +10,7 @@ from aiogram.fsm.context import FSMContext
 
 from crud_functions import get_all_products
 
-bot = Bot(token='8127768984:AAG9MJC0pXIhgkPEhv_gxFTm2UFQOacn7Zo')
+bot = Bot(token='')
 dp = Dispatcher()
 
 buttons = ReplyKeyboardMarkup(keyboard=[
